@@ -1,0 +1,69 @@
+//Answer 1
+package FSD;
+
+import java.util.Scanner;
+
+public class exception {
+    public static void main(String[] args) {
+        int x=100;
+        Scanner scanner=new Scanner(System.in);
+        try{
+            int y=scanner.nextInt();
+            int ans=x/y;
+            System.out.println("Ans is :"+ans);
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        try{
+            int arr[]={23,23,2333};
+            System.out.println(arr[100]);
+        } catch(ArithmeticException e){
+            System.out.println("ArithmeticException !");
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("ArrayIndexOutOfBoundsException !");
+        }
+        catch(Exception e){
+            System.out.println("Caught !"+e.getClass());
+        } finally {
+            System.out.println("Inside finally !");
+        }
+        System.out.println("Hello World ");
+    }
+}
+
+
+
+//Answer 2
+package FSD.utility;
+// Custom exception class
+class MyException extends Exception {
+    public MyException(String message) {
+        super(message);
+    }
+}
+
+// Main class
+public class UserDefinedExceptionExample {
+    // Method that throws the custom exception
+    public static void validateAge(int age) throws MyException {
+        if (age < 18) {
+            throw new MyException("Age must be greater than or equal to 18.");
+        } else {
+            System.out.println("Age is valid.");
+        }
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        int age = 15;
+
+        try {
+            // Call the method that may throw the custom exception
+            validateAge(age);
+        } catch (MyException e) {
+            // Catch and handle the custom exception
+            System.out.println("Caught an exception: " + e.getMessage());
+        }
+    }
+}
